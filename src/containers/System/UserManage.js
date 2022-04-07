@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import { getAllUsers, createNewUserService, deleteUserService } from '../../services/userService';
+import { getAllUsers, createNewUserService, editUserService, deleteUserService } from '../../services/userService';
 import ModalUser from './ModalUser';
+import ModalEditUser from './ModalEditUser';
 import { emitter } from '../../utils/emitter';
 
 class UserManage extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
             arrUsers: [],
             isOpenModalUser: false,
+            isOpenModalEditUser: false,
+            userEdit: {},
         }
     }
 
@@ -44,6 +46,13 @@ class UserManage extends Component {
         })
     }
 
+    toggleUserEditModal = () => {
+        this.setState({
+            isOpenModalEditUser: !this.state.isOpenModalEditUser,
+        })
+
+    }
+
     createNewUser = async (data) => {
         try {
             let response = await createNewUserService(data);
@@ -63,10 +72,35 @@ class UserManage extends Component {
         //console.log('check data from chikd', data)
     }
 
+    handleEditUser = (user) => {
+        console.log('check edit user:', user)
+        this.setState({
+            isOpenModalEditUser: true,
+            userEdit: user
+        })
+    }
+
+    doEditUser =  async(user) =>{
+        try{
+            let res = await editUserService(user);
+            if(res && res.errCode === 0){
+                this.setState({
+                    isOpenModalEditUser: false
+                })
+
+                await this.getAllUsersFromReact();
+            }else{
+                alert(res.errMessage);
+            }
+        }catch(e){
+            console.log(e)
+        }
+    }
+
     handleDeleteUser = async (user) => {
         try {
             let response = await deleteUserService(user.id);
-            if (response && response.errCode == 0) {
+            if (response && response.errCode === 0) {
                 await this.getAllUsersFromReact();
             } else {
                 alert(response.errMessage)
@@ -83,7 +117,7 @@ class UserManage extends Component {
      */
 
     render() {
-        // console.log('check render', this.state)
+       
         let arrUsers = this.state.arrUsers
         return (
             <div className="user-container">
@@ -92,6 +126,16 @@ class UserManage extends Component {
                     toggleFromParent={this.toggleUserModal}
                     createNewUser={this.createNewUser}
                 />
+
+                {
+                    this.state.isOpenModalEditUser &&
+                    <ModalEditUser
+                        isOpen={this.state.isOpenModalEditUser}
+                        toggleFromParent={this.toggleUserEditModal}
+                        currentUser={this.state.userEdit}
+                        editUser = {this.doEditUser}
+                    />
+                }
 
                 <div className="title text-center">Manage users</div>
 
@@ -120,8 +164,8 @@ class UserManage extends Component {
                                         <td>{item.fullName}</td>
                                         <td>{item.address}</td>
                                         <td>
-                                            <button className="btn-edit"><i className="fas fa-pencil-alt"></i></button>
-                                            <button onClick={() => this.handleDeleteUser(item)} className="btn-delete" ><i className="fas fa-trash"></i></button>
+                                            <button className="btn-edit" onClick={() => this.handleEditUser(item)}><i className="fas fa-pencil-alt"></i></button>
+                                            <button className="btn-delete" onClick={() => this.handleDeleteUser(item)}><i className="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
                                 )

@@ -111,7 +111,7 @@ class Login extends Component {
                         </div>
 
                         <div className="col-12 text-center">
-                            <button class="btn-login" onClick={() => { this.handleLogin() }}>Log in</button>
+                            <button className="btn-login" onClick={() => { this.handleLogin() }}>Log in</button>
                         </div>
 
                         <div className="col-12">
