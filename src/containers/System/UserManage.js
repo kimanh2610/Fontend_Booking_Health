@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import { getAllUsers, createNewUserService } from '../../services/userService';
+import { getAllUsers, createNewUserService, deleteUserService } from '../../services/userService';
 import ModalUser from './ModalUser';
+import { emitter } from '../../utils/emitter';
 
 class UserManage extends Component {
 
@@ -17,17 +18,16 @@ class UserManage extends Component {
 
 
     async componentDidMount() {
-       await this.getAllUsers();
+        await this.getAllUsersFromReact();
         //console.log('get user from node.js :', response)
     }
 
-    getAllUsers = async()=> {
+    getAllUsersFromReact = async () => {
         let response = await getAllUsers('ALL');
         if (response && response.errCode === 0) {
             this.setState({
                 arrUsers: response.users
             })
-
         }
     }
 
@@ -44,24 +44,37 @@ class UserManage extends Component {
         })
     }
 
-    createNewUser = async(data) => {
-        try{
+    createNewUser = async (data) => {
+        try {
             let response = await createNewUserService(data);
-            if(response && response.errCode !== 0){
+            if (response && response.errCode !== 0) {
                 alert(response.errMessage)
-            }else {
-                await this.getAllUsers();
+            } else {
+                await this.getAllUsersFromReact();
                 this.setState({
                     isOpenModalUser: false,
                 })
+                emitter.emit('EVENT_CLEAR_MODAL_DATA')
             }
-            console.log('response create user:', response)
-        }catch(e){
+            //   console.log('response create user:', response)
+        } catch (e) {
             console.log(e)
         }
-        console.log('check data from chikd',data)
+        //console.log('check data from chikd', data)
     }
 
+    handleDeleteUser = async (user) => {
+        try {
+            let response = await deleteUserService(user.id);
+            if (response && response.errCode == 0) {
+                await this.getAllUsersFromReact();
+            } else {
+                alert(response.errMessage)
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
     /** Life cycle
      * Run component
      * 1. Run construnct -> init state
@@ -77,7 +90,7 @@ class UserManage extends Component {
                 <ModalUser
                     isOpen={this.state.isOpenModalUser}
                     toggleFromParent={this.toggleUserModal}
-                    createNewUser = {this.createNewUser}
+                    createNewUser={this.createNewUser}
                 />
 
                 <div className="title text-center">Manage users</div>
@@ -102,15 +115,14 @@ class UserManage extends Component {
 
                             {arrUsers && arrUsers.map((item, index) => {
                                 return (
-                                    <tr>
+                                    <tr key={index}>
                                         <td>{item.email}</td>
                                         <td>{item.fullName}</td>
                                         <td>{item.address}</td>
                                         <td>
                                             <button className="btn-edit"><i className="fas fa-pencil-alt"></i></button>
-                                            <button className="btn-delete"><i className="fas fa-trash"></i></button>
+                                            <button onClick={() => this.handleDeleteUser(item)} className="btn-delete" ><i className="fas fa-trash"></i></button>
                                         </td>
-
                                     </tr>
                                 )
                             })

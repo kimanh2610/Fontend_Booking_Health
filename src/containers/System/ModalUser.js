@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
+import { emitter } from "../../utils/emitter"
 class ModalUser extends Component {
 
     constructor(props) {
@@ -13,9 +13,23 @@ class ModalUser extends Component {
             fullName: '',
             address: '',
         }
+
+        this.listenToEmitter();
+    }
+
+    listenToEmitter() {
+        emitter.on('EVENT_CLEAR_MODAL_DATA', () => {
+            this.setState({
+                email: '',
+                password: '',
+                fullName: '',
+                address: '',
+            })
+        })
     }
 
     componentDidMount() {
+        console.log('mouting modal')
     }
 
     toggle = () => {
@@ -36,18 +50,18 @@ class ModalUser extends Component {
         this.setState({
             ...copyState
         }, () => {
-           // console.log('check', this.state);
+            // console.log('check', this.state);
 
         });
     }
 
-    checkValideInput = () => {
+    checkValidateInput = () => {
         let isValid = true;
         let arrInput = ['email', 'password', 'fullName', 'address'];
-        
-        for(let i = 0; i < arrInput.length; i++) {           
+
+        for (let i = 0; i < arrInput.length; i++) {
             // console.log('check inside loop', this.state[arrInput[i]], arrInput[i]);
-            if(!this.state[arrInput[i]]){
+            if (!this.state[arrInput[i]]) {
                 isValid = false;
                 alert('Missing parameter: ' + arrInput[i]);
                 break;
@@ -57,11 +71,11 @@ class ModalUser extends Component {
     }
 
     handleAddNewUser = () => {
-        let isValid = this.checkValideInput();
-        if(isValid === true){
+        let isValid = this.checkValidateInput();
+        if (isValid === true) {
             //call api create modal
             this.props.createNewUser(this.state);
-           
+
         }
     }
 
