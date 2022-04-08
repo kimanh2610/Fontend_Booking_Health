@@ -15,14 +15,14 @@
             display: flex;
             align-items: center;
 
-            .header-logo{
+            .header-logo {
                 background: url(../../assets/logo.png) center center no-repeat;
                 height: 100%;
                 width: 100%;
                 cursor: pointer;
             }
 
-            i{
+            i {
                 font-size: 25px;
                 color: gray;
                 cursor: pointer;
@@ -38,8 +38,8 @@
 
 
             .child-content {
-                .sub-title{
-                    font-size:400;
+                .sub-title {
+                    font-size: 400;
                     font-size: 12px;
                 }
             }
@@ -53,4 +53,110 @@
             align-items: center;
         }
     }
+}
+
+.home-header-banner {
+    background: url('../../assets/header-background.jpg');
+    height: 485px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+
+    .content-up {
+        height: 50%;
+
+        .title1 {
+            text-align: center;
+            font-size: 30px;
+            color: white;
+            text-shadow: 1px 1px 1px #333;
+            margin-bottom: 5px;
+            font-weight: 400;
+            margin-top: 30px;
+        }
+
+        .title2 {
+            text-align: center;
+            font-size: 30px;
+            color: white;
+            text-shadow: 1px 1px 1px #333;
+            font-weight: 600;
+            margin-bottom: 15px;
+
+        }
+
+        .search {
+            // border: 1px solid red;
+            border-radius: 25px;
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            padding: 10px;
+            background: #f7d800;
+
+            i {
+                margin: 0 5px;
+            }
+
+            input {
+                height: 30px;
+                width: 360px;
+                background: transparent;
+                border: none;
+                outline: none;
+            }
+
+
+        }
+    }
+
+    .content-down {
+        height: 50%;
+
+        .options {
+           
+            text-align: center;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            .option-child {
+                width: 100px;
+                .icon-child {
+                    background: white;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    text-align: center;
+                    margin: 0 auto;
+                    padding: 10px;
+                    border: 1px solid rgb(136, 136, 136);
+
+
+                    i {
+                        color: #49bce2;
+                        font-size: 20px;
+                    }
+                }
+
+                .text-child {
+                    font-size: 17px;
+                    font-weight: 500;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: #49bce2;
+                    }
+                }
+            }
+
+        }
+
+
+
+    }
+
 }
