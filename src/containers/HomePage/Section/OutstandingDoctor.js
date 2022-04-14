@@ -6,7 +6,7 @@ import Slider from "react-slick";
 class MedicalFacility extends Component {
 
     render() {
-         return (
+        return (
             <div className="section-share section-outstanding-doctor">
                 <div className="section-container">
                     <div className="section-header" >
@@ -16,28 +16,84 @@ class MedicalFacility extends Component {
                     <div className="section-body">
                         <Slider {...this.props.settings}>
                             <div className="section-customize">
-                                <div className="bg-img section-outstanding-doctor" ></div>
-                                <div>Bác sĩ 1</div>
+                                <div className="customize-border">
+                                    <div className="outer-bg">
+                                        <div className="bg-img section-outstanding-doctor" ></div>
+                                    </div>
+
+                                    <div className="position text-center">
+                                        <div>Giáo sư, tiến sĩ Nguyễn Văn A</div>
+                                        <div>Cơ Xương Khớp</div>
+
+                                    </div>
+                                </div>
                             </div>
                             <div className="section-customize">
-                                <div className="bg-img section-outstanding-doctor" ></div>
-                                <div>Bác sĩ 2</div>
+                                <div className="customize-border">
+                                    <div className="outer-bg">
+                                        <div className="bg-img section-outstanding-doctor" ></div>
+                                    </div>
+
+                                    <div className="position text-center">
+                                        <div>Giáo sư, tiến sĩ Nguyễn Văn A</div>
+                                        <div>Cơ Xương Khớp</div>
+                                    </div>
+                                </div>
                             </div>
+
                             <div className="section-customize">
-                                <div className="bg-img section-outstanding-doctor" ></div>
-                                <div>Bác sĩ 3</div>
+                                <div className="customize-border">
+                                    <div className="outer-bg">
+                                        <div className="bg-img section-outstanding-doctor" ></div>
+                                    </div>
+
+                                    <div className="position text-center">
+                                        <div>Giáo sư, tiến sĩ Nguyễn Văn A</div>
+                                        <div>Cơ Xương Khớp</div>
+                                    </div>
+                                </div>
                             </div>
+
                             <div className="section-customize">
-                                <div className="bg-img section-outstanding-doctor" ></div>
-                                <div>Bác sĩ 4</div>
+                                <div className="customize-border">
+                                    <div className="outer-bg">
+                                        <div className="bg-img section-outstanding-doctor" ></div>
+                                    </div>
+
+                                    <div className="position text-center">
+                                        <div>Giáo sư, tiến sĩ Nguyễn Văn A</div>
+                                        <div>Cơ Xương Khớp</div>
+
+                                    </div>
+                                </div>
                             </div>
+
                             <div className="section-customize">
-                                <div className="bg-img section-outstanding-doctor" ></div>
-                                <div>BBác sĩ 5</div>
+                                <div className="customize-border">
+                                    <div className="outer-bg">
+                                        <div className="bg-img section-outstanding-doctor" ></div>
+                                    </div>
+
+                                    <div className="position text-center">
+                                        <div>Giáo sư, tiến sĩ Nguyễn Văn A</div>
+                                        <div>Cơ Xương Khớp</div>
+
+                                    </div>
+                                </div>
                             </div>
+
                             <div className="section-customize">
-                                <div className="bg-img section-outstanding-doctor" ></div>
-                                <div>Bác sĩ 6</div>
+                                <div className="customize-border">
+                                    <div className="outer-bg">
+                                        <div className="bg-img section-outstanding-doctor" ></div>
+                                    </div>
+
+                                    <div className="position text-center">
+                                        <div>Giáo sư, tiến sĩ Nguyễn Văn A</div>
+                                        <div>Cơ Xương Khớp</div>
+
+                                    </div>
+                                </div>
                             </div>
                         </Slider>
                     </div>
@@ -52,7 +108,7 @@ class MedicalFacility extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
-     
+
 
     };
 };
