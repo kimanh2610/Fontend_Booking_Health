@@ -86,13 +86,13 @@ class ModalUser extends Component {
                 isOpen={this.props.isOpen}
                 toggle={() => { this.toggle() }}
                 className={'modal-user-container'}
-                size="lg"
+                size="md"
 
             >
                 <ModalHeader toggle={() => { this.toggle() }}>Create a new user</ModalHeader>
                 <ModalBody>
                     <div className="modal-user-body">
-                        <div className="input-container">
+                        <div className="input-container max-width-input">
                             <label>Email</label>
                             <input
                                 type="text"
@@ -101,7 +101,7 @@ class ModalUser extends Component {
                             />
                         </div>
 
-                        <div className="input-container">
+                        <div className="input-container max-width-input">
                             <label>Password</label>
                             <input
                                 type="password"
@@ -110,8 +110,8 @@ class ModalUser extends Component {
                             />
                         </div>
 
-                        <div className="input-container">
-                            <label>fullName</label>
+                        <div className="input-container max-width-input">
+                            <label>FullName</label>
                             <input
                                 type="text"
                                 onChange={(event) => this.handleOnChangeInput(event, "fullName")}
