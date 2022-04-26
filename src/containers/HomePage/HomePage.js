@@ -15,11 +15,10 @@ class HomePage extends Component {
     render() {
         let settings = {
             dots: false,
-            infinite: true,
+            infinite: false,
             speed: 500,
             slidesToShow: 4,
-            slidesToScroll: 1,
-
+            slidesToScroll: 4,
         };
          return (
             <div>
