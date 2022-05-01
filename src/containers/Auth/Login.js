@@ -73,8 +73,6 @@ class Login extends Component {
 
     render() {
 
-
-
         return (
             <div className="login-background">
                 <div className="login-container">
