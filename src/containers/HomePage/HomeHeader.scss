@@ -1,47 +1,47 @@
 .home-header-container {
-    height: 60px;
-    width: 100%;
-    padding: 0 40px;
-    position: sticky;
-    top: 0;
+    height          : 60px;
+    width           : 100%;
+    padding         : 0 40px;
+    position        : sticky;
+    top             : 0;
     background-color: white;
-    z-index: 10000;
+    z-index         : 10000;
 
 
     .home-header-content {
-        width: 100%;
-        height: 100%;
+        width  : 100%;
+        height : 100%;
         display: flex;
 
 
         .left-content {
-            width: 20%;
-            display: flex;
+            width      : 20%;
+            display    : flex;
             align-items: center;
 
 
             .header-logo {
                 //background: url(../../assets/logo.png) center center no-repeat;
-                height: 100%;
-                width: 100%;
-                cursor: pointer;
-                transform: scale(0.7, 0.7);
+                height     : 100%;
+                width      : 100%;
+                cursor     : pointer;
+                transform  : scale(0.7, 0.7);
                 margin-left: -40px;
             }
 
             i {
                 font-size: 25px;
-                color: gray;
-                cursor: pointer;
+                color    : gray;
+                cursor   : pointer;
             }
 
         }
 
         .center-content {
-            width: 55%;
-            display: flex;
+            width          : 55%;
+            display        : flex;
             justify-content: space-between;
-            align-items: center;
+            align-items    : center;
 
 
             .child-content {
@@ -54,111 +54,118 @@
         }
 
         .right-content {
-            width: 25%;
-            display: flex;
+            width          : 25%;
+            display        : flex;
             justify-content: flex-end;
-            align-items: center;
+            align-items    : center;
 
-            .support{
+            .support {
                 padding-right: 50px;
-                display: flex;
-                align-items: center;
-                cursor: pointer;
-                i{
-                    font-size: 15px;
+                display      : flex;
+                align-items  : center;
+                cursor       : pointer;
+
+                i {
+                    font-size   : 15px;
                     margin-right: 5px;
                 }
             }
 
-            .language-vi{
-                cursor: pointer;
+            .language-vi {
+                cursor : pointer;
                 opacity: 0.2;
-                &.active{
+
+                &.active {
                     opacity: 1;
-                    span{
+
+                    span {
                         color: red;
                     }
                 }
-                &:hover{
+
+                &:hover {
                     opacity: 0.8;
                 }
             }
 
-            .language-en{
+            .language-en {
                 opacity: 0.2;
-                margin: 0 10px;
-                cursor: pointer;
-                &.active{
+                margin : 0 10px;
+                cursor : pointer;
+
+                &.active {
                     opacity: 1;
-                    span{
+
+                    span {
                         color: blue;
                     }
                 }
-                &:hover{
+
+                &:hover {
                     opacity: 0.8;
                 }
             }
-        
+
         }
     }
 }
 
 .home-header-banner {
-    background-image: url('../../assets/header-background.jpg');
-    height: 485px;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image   : url('../../assets/header-background.jpg');
+    height             : 485px;
+    background-repeat  : no-repeat;
+    background-size    : cover;
     background-position: center;
-    display: flex;
-    flex-direction: column;
+    display            : flex;
+    flex-direction     : column;
 
 
     .content-up {
         background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.1));
-        height: 65%;
-        padding-top: 15px;
+        height          : 65%;
+        padding-top     : 15px;
 
         .title1 {
-            text-align: center;
-            font-size: 30px;
-            color: white;
-            text-shadow: 1px 1px 1px #333;
+            text-align   : center;
+            font-size    : 30px;
+            color        : white;
+            text-shadow  : 1px 1px 1px #333;
             margin-bottom: 5px;
-            font-weight: 400;
-            margin-top: 30px;
+            font-weight  : 400;
+            margin-top   : 30px;
         }
 
         .title2 {
-            text-align: center;
-            font-size: 30px;
-            color: white;
-            text-shadow: 1px 1px 1px #333;
-            font-weight: 600;
+            text-align   : center;
+            font-size    : 30px;
+            color        : white;
+            text-shadow  : 1px 1px 1px #333;
+            font-weight  : 600;
             margin-bottom: 15px;
 
         }
 
         .search {
             // border: 1px solid red;
-            border-radius: 25px;
-            width: fit-content;
-            display: flex;
+            border-radius  : 25px;
+            width          : fit-content;
+            display        : flex;
             justify-content: center;
-            align-items: center;
-            margin: 0 auto;
-            padding: 10px;
-            background: #f7d800;
+            align-items    : center;
+            margin         : 0 auto;
+            padding        : 10px;
+            background     : #f7d800;
 
             i {
                 margin: 0 5px;
             }
 
             input {
-                height: 30px;
-                width: 360px;
+                height    : 30px;
+                width     : 360px;
                 background: transparent;
-                border: none;
-                outline: none;
+                border    : none;
+                outline   : none;
             }
 
 
@@ -166,42 +173,43 @@
     }
 
     .content-down {
-        height: 35%;
-        padding-bottom: 10px;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        background-image: linear-gradient(rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.9),rgba(255, 255, 255, 1));
+        height          : 35%;
+        padding-bottom  : 10px;
+        display         : flex;
+        align-items     : flex-end;
+        justify-content : center;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
+
         .options {
-            text-align: center;
-            display: flex;
-            gap: 50px;
+            text-align     : center;
+            display        : flex;
+            gap            : 50px;
             justify-content: center;
 
             .option-child {
                 width: 100px;
 
                 .icon-child {
-                    background: white;
-                    width: 40px;
-                    height: 40px;
+                    background   : white;
+                    width        : 40px;
+                    height       : 40px;
                     border-radius: 50%;
-                    text-align: center;
-                    margin: 0 auto;
-                    padding: 10px;
-                    border: 1px solid rgb(136, 136, 136);
+                    text-align   : center;
+                    margin       : 0 auto;
+                    padding      : 10px;
+                    border       : 1px solid rgb(136, 136, 136);
 
 
                     i {
-                        color: #49bce2;
+                        color    : #49bce2;
                         font-size: 20px;
                     }
                 }
 
                 .text-child {
-                    font-size: 17px;
+                    font-size  : 17px;
                     font-weight: 500;
-                    cursor: pointer;
+                    cursor     : pointer;
 
                     &:hover {
                         color: #49bce2;
