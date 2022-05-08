@@ -7,6 +7,7 @@ import { LANGUAGES } from '../../../utils';
 import { FormattedMessage } from 'react-intl';
 import NumberFormat from 'react-number-format';
 
+
 class DoctorExtraInfor extends Component {
     constructor(props) {
         super(props);

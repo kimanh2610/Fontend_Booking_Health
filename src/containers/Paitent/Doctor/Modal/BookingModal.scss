@@ -1,11 +1,13 @@
-.booking-modal-container {
+.booking-modal-container { 
+
     .booking-modal-content {
         display       : flex;
         flex-direction: column;
 
         .booking-modal-header {
-            padding      : 10px;
+            padding-top  : 15px;
             border-bottom: 1px solid #ccc;
+           
 
             .left {
                 font-size  : 15px;
@@ -15,14 +17,14 @@
             }
 
             .right {
-                float: right;
+                float : right;
                 cursor: pointer;
             }
         }
 
         .booking-modal-body {
-            padding: 15px;
-            height: 100%;
+            padding: 10px;
+            height : 100%;
         }
 
         .booking-modal-footer {
@@ -47,8 +49,6 @@
             .btn-booking-cancel {
                 background-color: gray;
                 color           : white
-
-
             }
         }
     }

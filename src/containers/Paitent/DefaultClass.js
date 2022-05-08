@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { FormattedMessage } from 'react-intl';
 
-import { FormattedMessage } from 'react-intl';
-// import NumberFormat from 'react-number-format';
-
 class DefaultClass extends Component {
     constructor(props) {
         super(props);
