@@ -5,7 +5,9 @@ import './ProfileDoctor.scss';
 import { LANGUAGES } from '../../../utils';
 import { getProfileDoctorById } from '../../../services/userService';
 import NumberFormat from 'react-number-format';
-
+import _ from 'lodash';
+import localization from 'moment/locale/vi'
+import moment from 'moment';
 
 class ProfileDoctor extends Component {
     constructor(props) {
@@ -42,16 +44,36 @@ class ProfileDoctor extends Component {
         }
     }
 
+    renderTimeBooking = (dataTime) => {
+        let{language} = this.props;
+        if(dataTime && !_.isEmpty(dataTime)){
+            let time = language === LANGUAGES.VI ? dataTime.timeTypeData.valueVi : dataTime.timeTypeData.valueEn;
+            let date = language === LANGUAGES.VI ? 
+                moment.unix(+dataTime.date / 1000).format('dddd - DD/MM/YYYY')
+                :
+                moment.unix(+dataTime.date / 1000).locale('en').format('ddd - MM/DD/YYYY')
+
+            return (
+                <>
+                    <div>
+                       {time} - {date}
+                    </div>
+                    <div>Miễn phí đặt lịch</div>
+                </>
+            )
+        }
+        return <></>
+    }
 
     render() {
-        // console.log('check state', this.state)
         let { dataProfile } = this.state;
-        let { language } = this.props;
+        let { language, isShowDescriptionDoctor, dataTime } = this.props;
         let nameVi = '', nameEn = '';
         if (dataProfile && dataProfile.positionData) {
             nameVi = `${dataProfile.positionData.valueVi}, ${dataProfile.fullName}`;
             nameEn = `${dataProfile.positionData.valueEn}, ${dataProfile.fullName}`;
         }
+        // console.log('check props', dataTime)
         return (
             <div className="profile-doctor-container">
                 <div className="intro-doctor">
@@ -65,18 +87,27 @@ class ProfileDoctor extends Component {
                             {language === LANGUAGES.VI ? nameVi : nameEn}
                         </div>
                         <div className="down">
-                            {dataProfile && dataProfile.Markdown && dataProfile.Markdown.description
-                                &&
-                                <span>
-                                    {dataProfile.Markdown.description}
-                                </span>
+                            {isShowDescriptionDoctor === true ?
+                                <>
+                                    {dataProfile && dataProfile.Markdown 
+                                        && dataProfile.Markdown.description
+                                        &&
+                                        <span>
+                                            {dataProfile.Markdown.description}
+                                        </span>
+                                    }
+                                </>
+                                :
+                                <>
+                                    {this.renderTimeBooking(dataTime)}
+                                </>
                             }
                         </div>
 
                     </div>
                 </div>
                 <div className="price">
-                    Giá khám: 
+                    Giá khám:
                     {dataProfile && dataProfile.Doctor_Infor && language === LANGUAGES.VI &&
                         <NumberFormat
                             className="currency"
@@ -85,7 +116,7 @@ class ProfileDoctor extends Component {
                             thousandSeparator={true}
                             suffix={'VNĐ'}
                         />
-                       
+
 
                     }
                     {dataProfile && dataProfile.Doctor_Infor && language === LANGUAGES.EN &&
@@ -97,7 +128,7 @@ class ProfileDoctor extends Component {
                             thousandSeparator={true}
                             suffix={'$'}
                         />
-                       
+
                     }
                 </div>
             </div>
