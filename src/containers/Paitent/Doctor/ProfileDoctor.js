@@ -45,10 +45,10 @@ class ProfileDoctor extends Component {
     }
 
     renderTimeBooking = (dataTime) => {
-        let{language} = this.props;
-        if(dataTime && !_.isEmpty(dataTime)){
+        let { language } = this.props;
+        if (dataTime && !_.isEmpty(dataTime)) {
             let time = language === LANGUAGES.VI ? dataTime.timeTypeData.valueVi : dataTime.timeTypeData.valueEn;
-            let date = language === LANGUAGES.VI ? 
+            let date = language === LANGUAGES.VI ?
                 moment.unix(+dataTime.date / 1000).format('dddd - DD/MM/YYYY')
                 :
                 moment.unix(+dataTime.date / 1000).locale('en').format('ddd - MM/DD/YYYY')
@@ -56,9 +56,12 @@ class ProfileDoctor extends Component {
             return (
                 <>
                     <div>
-                       {time} - {date}
+                        {time} - {date}
                     </div>
-                    <div>Miễn phí đặt lịch</div>
+                    <div>
+                        <FormattedMessage id="patient.profile-doctor.free-booking" />
+
+                    </div>
                 </>
             )
         }
@@ -89,7 +92,7 @@ class ProfileDoctor extends Component {
                         <div className="down">
                             {isShowDescriptionDoctor === true ?
                                 <>
-                                    {dataProfile && dataProfile.Markdown 
+                                    {dataProfile && dataProfile.Markdown
                                         && dataProfile.Markdown.description
                                         &&
                                         <span>
@@ -107,7 +110,8 @@ class ProfileDoctor extends Component {
                     </div>
                 </div>
                 <div className="price">
-                    Giá khám:
+                    <FormattedMessage id="patient.profile-doctor.price" /> 
+
                     {dataProfile && dataProfile.Doctor_Infor && language === LANGUAGES.VI &&
                         <NumberFormat
                             className="currency"
