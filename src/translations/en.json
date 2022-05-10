@@ -82,7 +82,7 @@
             "title": "Information to book a medical appointment",
             "fullname": "FullName",
             "phone-number": "Phone number",
-            "email-address": "Email",
+            "email": "Email",
             "address": "Address",
             "reason": "Reasons for medical examination",
             "birthday": "Date of birth",

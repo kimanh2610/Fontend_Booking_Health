@@ -52,7 +52,6 @@ class ProfileDoctor extends Component {
                 moment.unix(+dataTime.date / 1000).format('dddd - DD/MM/YYYY')
                 :
                 moment.unix(+dataTime.date / 1000).locale('en').format('ddd - MM/DD/YYYY')
-
             return (
                 <>
                     <div>
