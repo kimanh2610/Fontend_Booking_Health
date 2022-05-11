@@ -1,79 +1,58 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-
+import { getSpecialty } from '../../../services/userService';
+import './Specialty.scss';
 import Slider from "react-slick";
-// Import css files
 
-
-//img
-import specialtyImg from "../../../assets/specialty/co-xuong-khop.jpg"
-function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={className}
-            style={{ ...style, display: "block", background: "red" }}
-            onClick={onClick}
-        >
-
-        </div>
-    );
-}
-
-function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={className}
-            style={{ ...style, display: "block", background: "green" }}
-            onClick={onClick}
-        />
-    );
-}
 class Specialty extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            dataSpecialty: []
+        }
+    }
+
+    async componentDidMount() {
+        let res = await getSpecialty();
+        console.log('check res', res)
+        if (res && res.errCode === 0) {
+            this.setState({
+                dataSpecialty: res.data ? res.data : []
+            })
+        }
+    }
 
     render() {
-        
+        let { dataSpecialty } = this.state
         return (
             <div className="section-share section-specialty">
                 <div className="section-container">
                     <div className="section-header" >
-                        <span className="title-section">Chuyên khoa phổ biến</span>
-                        <button className="btn-section">Xem thêm</button>
+                        <span className="title-section">
+                            <FormattedMessage id="homepage.specialty-popular"/>
+                        </span>
+                        <button className="btn-section">
+                        <FormattedMessage id="homepage.more-infor"/>
+                        </button>
                     </div>
                     <div className="section-body">
                         <Slider {...this.props.settings}>
-                            <div className="section-customize">
-                                <div className="bg-img section-specialty" ></div>
-                                <div>Cơ xương khớp 1</div>
+                            {dataSpecialty && dataSpecialty.length > 0 &&
+                                dataSpecialty.map((item, index) => {
+                                    return (
+                                        <div className="section-customize specialty-child" key={index}>
+                                            <div className="bg-img section-specialty"
+                                                style={{ backgroundImage: `url(${item.image})` }}
 
-                            </div>
-                            <div className="section-customize">
-                                <div className="bg-img section-specialty" ></div>
+                                            >
 
-                                <div>Cơ xương khớp 2</div>
-                            </div>
-                            <div className="section-customize">
-                                <div className="bg-img section-specialty" ></div>
-
-                                <div>Cơ xương khớp 3</div>
-                            </div>
-                            <div className="section-customize">
-                                <div className="bg-img section-specialty" ></div>
-
-                                <div>Cơ xương khớp 4</div>
-                            </div>
-                            <div className="section-customize">
-                                <div className="bg-img section-specialty" ></div>
-
-                                <div>Cơ xương khớp 5</div>
-                            </div>
-                            <div className="section-customize">
-                                <div className="bg-img section-specialty" ></div>
-
-                                <div>Cơ xương khớp 6</div>
-                            </div>
+                                            </div>
+                                            <div className="specialty-name">{item.name}</div>
+                                        </div>
+                                    )
+                                })
+                            }
                         </Slider>
                     </div>
                 </div>
