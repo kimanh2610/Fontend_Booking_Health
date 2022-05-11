@@ -137,13 +137,16 @@ class UserManage extends Component {
                     />
                 }
 
-                <div className="title text-center">Manage users</div>
+                <div className="title text-center">
+                    <FormattedMessage id='manage-user.manage-user'/>
+                </div>
 
                 <div className="mx-1">
                     <button
                         className="btn btn-primary px-3"
                         onClick={() => this.handleAddNewUser()}>
-                        <i className="fas fa-plus"></i> Add new user
+                        <i className="fas fa-plus"></i> 
+                        <FormattedMessage id='manage-user.add-user' />
                     </button>
                 </div>
 
@@ -151,10 +154,10 @@ class UserManage extends Component {
                     <table id="customers">
                         <tbody>
                             <tr>
-                                <th>Email</th>
-                                <th>FullName</th>
-                                <th>Address</th>
-                                <th>Actions</th>
+                                <th><FormattedMessage id='manage-user.email' /></th>
+                                <th><FormattedMessage id='manage-user.fullname' /></th>
+                                <th><FormattedMessage id='manage-user.address' /></th>
+                                <th><FormattedMessage id='manage-user.action' /></th>
                             </tr>
 
                             {arrUsers && arrUsers.map((item, index) => {

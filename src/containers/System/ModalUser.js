@@ -29,7 +29,7 @@ class ModalUser extends Component {
     }
 
     componentDidMount() {
-      //  console.log('mouting modal')
+        //  console.log('mouting modal')
     }
 
     toggle = () => {
@@ -89,11 +89,17 @@ class ModalUser extends Component {
                 size="md"
 
             >
-                <ModalHeader toggle={() => { this.toggle() }}>Create a new user</ModalHeader>
+                <ModalHeader toggle={() => { this.toggle() }}>
+
+                    <FormattedMessage id='manage-user.create-user' />
+                </ModalHeader>
                 <ModalBody>
                     <div className="modal-user-body">
                         <div className="input-container max-width-input">
-                            <label>Email</label>
+                            <label>
+                                <FormattedMessage id='manage-user.email' />
+
+                            </label>
                             <input
                                 type="text"
                                 onChange={(event) => this.handleOnChangeInput(event, "email")}
@@ -102,7 +108,10 @@ class ModalUser extends Component {
                         </div>
 
                         <div className="input-container max-width-input">
-                            <label>Password</label>
+                            <label>
+                                <FormattedMessage id='manage-user.password' />
+
+                            </label>
                             <input
                                 type="password"
                                 onChange={(event) => this.handleOnChangeInput(event, "password")}
@@ -111,7 +120,10 @@ class ModalUser extends Component {
                         </div>
 
                         <div className="input-container max-width-input">
-                            <label>FullName</label>
+                            <label>
+                                <FormattedMessage id='manage-user.fullname' />
+
+                            </label>
                             <input
                                 type="text"
                                 onChange={(event) => this.handleOnChangeInput(event, "fullName")}
@@ -120,7 +132,10 @@ class ModalUser extends Component {
                         </div>
 
                         <div className="input-container max-width-input">
-                            <label>Address</label>
+                            <label>
+                                <FormattedMessage id='manage-user.address' />
+
+                            </label>
                             <input
                                 type="text"
                                 onChange={(event) => this.handleOnChangeInput(event, "address")}
@@ -137,8 +152,13 @@ class ModalUser extends Component {
                         color="primary"
                         className="px-3"
                         onClick={() => { this.handleAddNewUser() }}>
-                        Add new</Button>{' '}
-                    <Button color="secondary" className="px-3" onClick={() => { this.toggle() }}>Cancel</Button>
+                        <FormattedMessage id='manage-user.add-new' />
+
+                    </Button>{' '}
+                    <Button color="secondary" className="px-3" onClick={() => { this.toggle() }}>
+                        <FormattedMessage id='manage-user.cancel' />
+
+                    </Button>
                 </ModalFooter>
             </Modal>
         )

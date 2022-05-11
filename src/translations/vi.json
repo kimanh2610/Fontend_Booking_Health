@@ -51,7 +51,13 @@
         "role": "Vai trò",
         "image": "Ảnh đại diện",
         "save": "Tạo người dùng",
-        "edit": "Lưu thay đổi"
+        "edit": "Lưu thay đổi",
+        "create-user": "Tạo mới người dùng",
+        "add-new": " Tạo người dùng",
+        "cancel" : "Hủy",
+        "add-user": "Tạo người dùng mới",
+        "manage-user": "Quản lý người dùng",
+        "action": "Hành động"
     },
     "homepage": {
         "outStanding-doctor": "Bác sĩ nổi bậc tuần qua",
