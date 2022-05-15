@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { FormattedMessage } from 'react-intl';
-import './DetailSpecialty.scss';
+import './DetailClinic.scss';
 import HomeHeader from '../../HomePage/HomeHeader';
 import DoctorSchedule from '../Doctor/DoctorSchedule';
 import DoctorExtraInfor from '../Doctor/DoctorExtraInfor';
 import ProfileDoctor from '../Doctor/ProfileDoctor';
-import { getDetailSpecialtyById } from '../../../services/userService'
+import { getDetailClinicById } from '../../../services/userService'
 import _ from 'lodash';
 
 
-class DetailSpecialty extends Component {
+class DetailClinic extends Component {
     constructor(props) {
         super(props);
         this.state = {
             arrDoctorId: [],
-            dataDetailSpecialty: {}
+            dataDetailClinic: {}
         }
     }
 
@@ -23,15 +23,15 @@ class DetailSpecialty extends Component {
         if (this.props.match && this.props.match.params && this.props.match.params.id) {
             let id = this.props.match.params.id;
 
-            let res = await getDetailSpecialtyById({
+            let res = await getDetailClinicById({
                 id: id
             });
-          //  console.log("data front end", res)
+            //  console.log("data front end", res)
             if (res && res.errCode === 0) {
                 let data = res.data;
                 let arrDoctorId = [];
                 if (data && !_.isEmpty(res.data)) {
-                    let arr = data.doctorSpecialty;
+                    let arr = data.doctorClinic;
                     if (arr && arr.length > 0) {
                         arr.map(item => {
                             arrDoctorId.push(item.doctorId)
@@ -39,7 +39,7 @@ class DetailSpecialty extends Component {
                     }
                 }
                 this.setState({
-                    dataDetailSpecialty: res.data,
+                    dataDetailClinic: res.data,
                     arrDoctorId: arrDoctorId
                 })
             }
@@ -55,18 +55,21 @@ class DetailSpecialty extends Component {
 
 
     render() {
-        let { arrDoctorId, dataDetailSpecialty } = this.state;
+        let { arrDoctorId, dataDetailClinic } = this.state;
         // console.log('check state', this.state);
 
         return (
-            <div className="detail-specialty-container">
+            <div className="detail-clinic-container">
                 <HomeHeader />
-                <div className="detail-specialty-body">
-                    <div className="description-specialty">
-                        {dataDetailSpecialty && !_.isEmpty(dataDetailSpecialty)
+                <div className="detail-clinic-body">
+                    <div className="description-clinic">
+                        {dataDetailClinic && !_.isEmpty(dataDetailClinic)
                             &&
-                            <div div dangerouslySetInnerHTML={{ __html: dataDetailSpecialty.descriptionHTML }}>
-                            </div>
+                            <>
+                                <div className="name-clinic-title">{dataDetailClinic.name}</div>
+                                <div div dangerouslySetInnerHTML={{ __html: dataDetailClinic.descriptionHTML }}>
+                                </div>
+                            </>
 
                         }
                     </div>
@@ -122,4 +125,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailSpecialty);
+export default connect(mapStateToProps, mapDispatchToProps)(DetailClinic);

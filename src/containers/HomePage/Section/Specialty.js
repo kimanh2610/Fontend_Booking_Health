@@ -16,12 +16,12 @@ class Specialty extends Component {
 
     async componentDidMount() {
         let res = await getSpecialty();
-        console.log('check res', res)
         if (res && res.errCode === 0) {
             this.setState({
                 dataSpecialty: res.data ? res.data : []
             })
         }
+        console.log('check res', res)
     }
 
     handleViewDetailSpecialty = (item) => {
@@ -32,6 +32,7 @@ class Specialty extends Component {
 
     render() {
         let { dataSpecialty } = this.state
+       // console.log('check specalty', this.state)
         return (
             <div className="section-share section-specialty">
                 <div className="section-container">
@@ -54,9 +55,7 @@ class Specialty extends Component {
                                         >
                                             <div className="bg-img section-specialty"
                                                 style={{ backgroundImage: `url(${item.image})` }}
-
                                             >
-
                                             </div>
                                             <div className="specialty-name">{item.name}</div>
                                         </div>
