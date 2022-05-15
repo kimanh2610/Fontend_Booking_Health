@@ -26,13 +26,13 @@ class DetailSpecialty extends Component {
             let res = await getDetailSpecialtyById({
                 id: id
             });
-              console.log("data front end",res)
+            console.log("data front end", res)
             if (res && res.errCode === 0) {
                 let data = res.data;
                 let arrDoctorId = [];
-                if(data && !_.isEmpty(res.data)){
+                if (data && !_.isEmpty(res.data)) {
                     let arr = data.doctorSpecialty;
-                    if(arr && arr.length > 0){
+                    if (arr && arr.length > 0) {
                         arr.map(item => {
                             arrDoctorId.push(item.doctorId)
                         })
@@ -56,7 +56,7 @@ class DetailSpecialty extends Component {
 
     render() {
         let { arrDoctorId, dataDetailSpecialty } = this.state;
-        console.log('check state', this.state);
+        // console.log('check state', this.state);
 
         return (
             <div className="detail-specialty-container">
@@ -80,6 +80,8 @@ class DetailSpecialty extends Component {
                                             <ProfileDoctor
                                                 doctorId={item}
                                                 isShowDescriptionDoctor={true}
+                                                isShowLinkDetail={true}
+                                                isShowPrice={false}
                                             // dataTime={dataTime}
                                             />
                                         </div>

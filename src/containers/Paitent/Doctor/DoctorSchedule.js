@@ -27,6 +27,13 @@ class DoctorSchedule extends Component {
                 allDays: allDays
             })
         }
+        if (this.props.doctorIdFromParent) {
+            let res = await getSchedleDoctorByDate(this.props.doctorIdFromParent, allDays[0].value);
+            this.setState({
+                allAvalableTime: res.infor.data ? res.infor.data : []
+            })
+
+        }
     }
 
     capitalizeFirstLetter(string) {
@@ -182,8 +189,8 @@ class DoctorSchedule extends Component {
 
                 <BookingModal
                     isOpenModal={isOpenModalBooking}
-                    closeBookingModal = {this.closeBookingModal}
-                    dataTime = {dataScheduleTimeModal}
+                    closeBookingModal={this.closeBookingModal}
+                    dataTime={dataScheduleTimeModal}
                 />
             </>
         );
