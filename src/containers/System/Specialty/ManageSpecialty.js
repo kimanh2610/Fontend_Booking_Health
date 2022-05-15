@@ -4,8 +4,8 @@ import { FormattedMessage } from 'react-intl';
 import './ManageSpecialty.scss';
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
-import { LANGUAGES, CommonUtils } from "../../../../utils";
-import {createNewSpecialty} from "../../../../services/userService"
+import { LANGUAGES, CommonUtils } from "../../../utils";
+import {createNewSpecialty} from "../../../services/userService"
 import {toast} from "react-toastify";
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
@@ -66,7 +66,7 @@ class ManageSpecialty extends Component {
             })
         }else{
             toast.error("Add new specialty failed!")
-            console.log('check res', res)
+           // console.log('check res', res)
         }
     }
     render() {
