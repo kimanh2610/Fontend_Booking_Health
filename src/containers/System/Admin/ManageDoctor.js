@@ -162,14 +162,14 @@ class ManageDoctor extends Component {
 
     handleChangeSelect = async (selectedDoctor, name) => {
         this.setState({ selectedDoctor });
-        let { listPayment, listPrice } = this.state;
+        let { listPayment, listPrice, listSpecialty } = this.state;
 
         let res = await getDetailInforDoctor(selectedDoctor.value)
         if (res && res.infor.errCode === 0 && res.infor.data && res.infor.data.Markdown) {
             let markdown = res.infor.data.Markdown;
             let addressClinic = '', nameClinic = '', note = '',
-                paymentId = '', priceId = '', selectedPayment = '',
-                selectedPrice = '';
+                paymentId = '', priceId = '', specialtyId = '', selectedPayment = '',
+                selectedPrice = '', selectedSpecialty = '';
 
             if (res.infor.data.Doctor_Infor) {
                 addressClinic = res.infor.data.Doctor_Infor.addressClinic;
@@ -177,15 +177,19 @@ class ManageDoctor extends Component {
                 note = res.infor.data.Doctor_Infor.note;
                 paymentId = res.infor.data.Doctor_Infor.paymentId;
                 priceId = res.infor.data.Doctor_Infor.priceId;
+                specialtyId = res.infor.data.Doctor_Infor.specialtyId;
 
                 selectedPayment = listPayment.find(item => {
                     return item && item.value === paymentId;
                 });
 
-
                 selectedPrice = listPrice.find(item => {
                     return item && item.value === priceId
                 });
+
+                selectedSpecialty = listSpecialty.find(item => {
+                    return item && item.value === specialtyId
+                })
             }
 
             this.setState({
@@ -198,6 +202,7 @@ class ManageDoctor extends Component {
                 note: note,
                 selectedPrice: selectedPrice,
                 selectedPayment: selectedPayment,
+                selectedSpecialty: selectedSpecialty,
                 // paymentId: paymentId,
                 // priceId: priceId,
 
@@ -211,6 +216,9 @@ class ManageDoctor extends Component {
                 addressClinic: '',
                 nameClinic: '',
                 note: '',
+                selectedPrice: '',
+                selectedPayment: '',
+                selectedSpecialty: '',
             })
         }
         //console.log(`Option selected:`, res);
