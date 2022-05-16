@@ -1,56 +1,66 @@
+div._loading_overlay_wrapper {
+  position: unset !important;
+
+  ._loading_overlay_overlay {
+    z-index: 10000 !important;
+  }
+}
+
 .manage-paitent-container {
 
-    .manage-paitent-title {
-        font-size     : 17px;
-        margin        : 10px 0;
-        text-align    : center;
-        text-transform: uppercase;
-        font-weight   : 600;
+  .manage-paitent-title {
+    font-size     : 17px;
+    margin        : 10px 0;
+    text-align    : center;
+    text-transform: uppercase;
+    font-weight   : 600;
+
+  }
+
+  .manage-paitent-body {
+    padding: 0 20px;
+
+    .table-manage-paitent {
+      table {
+        font-family    : arial, sans-serif;
+        border-collapse: collapse;
+        width          : 100%;
+      }
+
+      td,
+      th {
+        border    : 1px solid #dddddd;
+        text-align: left;
+        padding   : 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+
+      button {
+        border : none;
+        outline: none;
+        cursor : pointer;
+      }
+
+      .btn-confirm {
+        margin-right : 10px;
+        height       : 30px;
+        border-radius: 3px;
+        background   : #007bff;
+        color        : white;
+      }
+
+      .btn-remedy {
+        height       : 30px;
+        border-radius: 3px;
+        background   : #33da9d;
+        color        : white;
+
+      }
 
     }
 
-    .manage-paitent-body {
-        padding: 0 20px;
-
-        .table-manage-paitent{
-          table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-          }
-          
-          td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-          }
-          
-          tr:nth-child(even) {
-            background-color: #dddddd;
-          }
-
-          button{
-            border: none;
-            outline: none;
-            cursor: pointer;
-          }
-          .btn-confirm{
-            margin-right: 10px;
-            height: 30px;
-            border-radius: 3px;
-            background: #007bff;
-            color: white;
-          }
-
-          .btn-remedy{
-            height: 30px;
-            border-radius: 3px;
-            background: #33da9d;
-            color: white;
-
-          }
-
-        }
-        
-    }
+  }
 }
