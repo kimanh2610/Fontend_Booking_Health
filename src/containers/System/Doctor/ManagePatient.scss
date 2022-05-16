@@ -12,7 +12,8 @@
     .manage-paitent-body {
         padding: 0 20px;
 
-        table {
+        .table-manage-paitent{
+          table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
@@ -27,5 +28,29 @@
           tr:nth-child(even) {
             background-color: #dddddd;
           }
+
+          button{
+            border: none;
+            outline: none;
+            cursor: pointer;
+          }
+          .btn-confirm{
+            margin-right: 10px;
+            height: 30px;
+            border-radius: 3px;
+            background: #007bff;
+            color: white;
+          }
+
+          .btn-remedy{
+            height: 30px;
+            border-radius: 3px;
+            background: #33da9d;
+            color: white;
+
+          }
+
+        }
+        
     }
 }
