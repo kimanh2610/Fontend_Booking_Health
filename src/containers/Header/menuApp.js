@@ -56,6 +56,7 @@ export const adminMenu = [
             },
         ]
     },
+
 ];
 
 export const doctorMenu = [
@@ -65,6 +66,10 @@ export const doctorMenu = [
 
             { //quản lý kế hoạch khám bệnh
                 name: 'menu.doctor.manage-schedule', link: '/doctor/manage-schedule'
+
+            },
+            { //quản lý bệnh nhân khám bệnh
+                name: 'menu.doctor.manage-paitent', link: '/doctor/manage-paitent'
 
             },
         ]
